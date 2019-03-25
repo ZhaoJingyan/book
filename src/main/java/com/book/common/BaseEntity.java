@@ -18,12 +18,21 @@ import java.time.LocalDateTime;
 @Data
 public abstract class BaseEntity<I> implements Serializable {
 
+    /**
+     * id,主键
+     */
     @TableId(value = "id", type = IdType.AUTO)
     private I id = null;
 
+    /**
+     * 创建时间
+     */
     @TableField(value = "create_time")
     private LocalDateTime createTime;
 
+    /**
+     * 修改时间
+     */
     @TableField("update_time")
     private LocalDateTime updateTime;
 
