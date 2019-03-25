@@ -1,6 +1,6 @@
 CREATE SCHEMA `book` DEFAULT CHARACTER SET utf8mb4;
 
-drop table if EXISTS `abstract`;
+DROP TABLE IF EXISTS `abstract`;
 CREATE TABLE abstract
 (
   id          INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',

@@ -3,6 +3,7 @@ package com.book.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.book.common.BaseEntity;
+import com.book.entity.type.AccountDate;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -26,10 +27,10 @@ public class Book extends BaseEntity<Long> {
     private String name;
 
     @TableField("account_date")
-    private String accountDate;
+    private AccountDate accountDate;
 
     @TableField("closing_account_date")
-    private String closingAccountDate;
+    private AccountDate closingAccountDate;
 
     @TableField("abstract_id")
     private long abstractId;
