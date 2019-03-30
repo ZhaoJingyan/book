@@ -22,6 +22,9 @@ import org.apache.ibatis.type.Alias;
 @TableName("abstract")
 public class Abstract extends BaseEntity<Long> {
 
+    /**
+     * 内容
+     */
     private String content;
 
 }
