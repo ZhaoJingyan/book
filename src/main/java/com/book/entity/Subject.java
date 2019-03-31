@@ -3,6 +3,8 @@ package com.book.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.book.common.BaseEntity;
+import com.book.entity.type.SubjectNumber;
+import com.book.entity.type.SubjectPath;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
