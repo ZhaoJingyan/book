@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.book.dao.BookDao">
     <resultMap id="bookResultMap" type="Book">
         <id property="id" column="id"/>
@@ -9,6 +9,7 @@
         <result property="abstractId" column="abstract_id"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
+        <result property="abstractId" column="abstract_id"/>
         <association property="abstractContent" column="abstract_id" javaType="string"
                      select="com.book.dao.AbstractDao.selectContentById"/>
     </resultMap>
