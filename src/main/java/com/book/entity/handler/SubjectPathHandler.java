@@ -2,6 +2,8 @@ package com.book.entity.handler;
 
 import com.book.entity.type.SubjectPath;
 import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.MappedJdbcTypes;
+import org.apache.ibatis.type.MappedTypes;
 import org.apache.ibatis.type.TypeHandler;
 
 import java.sql.CallableStatement;
@@ -13,6 +15,8 @@ import java.sql.SQLException;
  * @author Zhao Jinyan
  * @date 2019-03-30
  */
+@MappedJdbcTypes(JdbcType.VARCHAR)
+@MappedTypes(SubjectPath.class)
 public class SubjectPathHandler implements TypeHandler<SubjectPath> {
 
     @Override
