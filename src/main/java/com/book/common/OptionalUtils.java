@@ -17,7 +17,7 @@ public class OptionalUtils {
         return isNull(string) || EMPTY_STRING.equals(string);
     }
 
-    private static boolean isBlank(String string){
+    public static boolean isBlank(String string){
         return isEmpty(string.trim());
     }
 
