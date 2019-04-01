@@ -4,7 +4,6 @@ import com.book.common.OptionalUtils;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * 科目号
@@ -14,18 +13,33 @@ import java.util.Objects;
  */
 public class SubjectNumber {
 
+    /**
+     * 空目录号
+     */
     private final static String EMPTY_ID = "00000000";
 
+    /**
+     * 空科目号，也是根目录号
+     */
     private final static SubjectNumber EMPTY_SUBJECT_NUMBER = new SubjectNumber(EMPTY_ID);
 
+    /**
+     * 客户号缓存
+     */
     private static Map<String, SubjectNumber> cache = new HashMap<>();
 
-    public static SubjectNumber of(final String id){
-        if(OptionalUtils.isBlank(id) || EMPTY_ID.equals(id)){
+    /**
+     * 获取科目号
+     *
+     * @param id 号码
+     * @return 科目号
+     */
+    public static SubjectNumber of(final String id) {
+        if (OptionalUtils.isBlank(id) || EMPTY_ID.equals(id)) {
             return EMPTY_SUBJECT_NUMBER;
         }
         SubjectNumber number = cache.get(id);
-        if(number == null){
+        if (number == null) {
             number = new SubjectNumber(id);
             cache.put(id, number);
         }
@@ -34,7 +48,7 @@ public class SubjectNumber {
 
     private String id;
 
-    private SubjectNumber(final String id){
+    private SubjectNumber(final String id) {
         this.id = OptionalUtils.isBlank(id) ? EMPTY_ID : id;
     }
 
@@ -51,4 +65,5 @@ public class SubjectNumber {
     public String toString() {
         return id;
     }
+
 }
