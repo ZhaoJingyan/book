@@ -43,12 +43,12 @@ CREATE TABLE book
 DROP TABLE IF EXISTS `subject`;
 CREATE TABLE subject
 (
-  id               INT PRIMARY KEY COMMENT '主键',
+  id               INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
   `subject_number` CHAR(10)     NOT NULL
     COMMENT '科目号',
   `book_id`        INT          NOT NULL DEFAULT 0
     COMMENT '账本ID',
-  `path`           VARCHAR(255) NOT NULL UNIQUE
+  `path`           VARCHAR(255) NOT NULL
     COMMENT '路径',
   `name`           VARCHAR(30)  NOT NULL,
   `pid`            CHAR(8)      NOT NULL DEFAULT 0,
@@ -60,13 +60,14 @@ CREATE TABLE subject
   `abstract_id`    INT          NOT NULL DEFAULT 0
     COMMENT '摘要',
   UNIQUE KEY (id, book_id),
-  UNIQUE KEY (name)
+  UNIQUE KEY (path)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   AUTO_INCREMENT = 1
   COMMENT '科目';
 
+drop table if exists `water`;
 CREATE TABLE `water`
 (
   id          INT PRIMARY KEY AUTO_INCREMENT
@@ -75,6 +76,7 @@ CREATE TABLE `water`
     COMMENT '账本id',
   subject_id  INT            NOT NULL DEFAULT 0
     COMMENT '科目id',
+  log_id      int            not null default 0 comment '日志号',
   money       DECIMAL(10, 2) NOT NULL DEFAULT 0
     COMMENT '金额',
   create_time TIMESTAMP      NOT NULL DEFAULT current_timestamp
