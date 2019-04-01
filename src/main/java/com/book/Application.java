@@ -14,8 +14,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.book.dao")
 public class Application {
 
-
-
     /**
      * 程序入口
      *
