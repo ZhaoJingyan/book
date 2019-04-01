@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
+ * Subject Path的数据类型转化器
+ *
  * @author Zhao Jinyan
  * @date 2019-03-30
  */
