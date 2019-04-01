@@ -15,6 +15,13 @@ import java.util.List;
  */
 public interface WaterDao extends BaseMapper<Water> {
 
+    /**
+     * 根据transDate查询流水
+     *
+     * @param beginDate 开始时间
+     * @param endDate   结束时间
+     * @return water list
+     */
     List<Water> selectByTransDate(@Param("beginDate") AccountDate beginDate, @Param("endDate") AccountDate endDate);
 
 }
