@@ -70,18 +70,18 @@ CREATE TABLE subject
 drop table if exists `water`;
 CREATE TABLE `water`
 (
-  id          INT PRIMARY KEY AUTO_INCREMENT
+  id             INT PRIMARY KEY AUTO_INCREMENT
     COMMENT '主键',
-  book_id     INT            NOT NULL DEFAULT 0
+  book_id        INT            NOT NULL DEFAULT 0
     COMMENT '账本id',
-  subject_id  INT            NOT NULL DEFAULT 0
+  subject_number varchar(10)    NOT NULL DEFAULT 0
     COMMENT '科目id',
-  log_id      int            not null default 0 comment '日志号',
-  money       DECIMAL(10, 2) NOT NULL DEFAULT 0
+  log_id         int            not null default 0 comment '日志号',
+  money          DECIMAL(10, 2) NOT NULL DEFAULT 0
     COMMENT '金额',
-  create_time TIMESTAMP      NOT NULL DEFAULT current_timestamp
+  create_time    TIMESTAMP      NOT NULL DEFAULT current_timestamp
     COMMENT '创建时间',
-  update_time TIMESTAMP      NULL     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  update_time    TIMESTAMP      NULL     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     COMMENT '更行时间'
 )
   ENGINE = InnoDB
@@ -89,12 +89,14 @@ CREATE TABLE `water`
   AUTO_INCREMENT = 1
   COMMENT '流水';
 
+drop table if exists `accounting_entry`;
 CREATE TABLE accounting_entry
 (
   id          INT PRIMARY KEY AUTO_INCREMENT
     COMMENT '主键',
   book_id     INT       NOT NULL DEFAULT 0
     COMMENT '账本id',
+  trans_date varchar(8) not null default '00000000' comment '交易日期',
   create_time TIMESTAMP NOT NULL DEFAULT current_timestamp
     COMMENT '创建时间',
   update_time TIMESTAMP NULL     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
