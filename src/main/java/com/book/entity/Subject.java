@@ -20,7 +20,7 @@ import org.apache.ibatis.type.Alias;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @Alias("Subject")
-@TableName("subject")
+@TableName(value = "subject", resultMap = "subjectResultMap")
 public class Subject extends BaseEntity<Integer> {
 
     @TableField("subject_number")
