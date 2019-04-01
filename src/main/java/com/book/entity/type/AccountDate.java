@@ -25,6 +25,10 @@ public class AccountDate {
 
     private String day = null;
 
+    public AccountDate(Date date) {
+        this(DateUtils.SIMPLE_DATE_FORMAT.format(date));
+    }
+
     public AccountDate(String dateString) {
         this.dateString = Objects.isNull(dateString) || dateString.length() < 8
             ? EMPTY_ACCOUNT_DATE_STRING : dateString;

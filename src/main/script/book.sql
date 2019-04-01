@@ -77,6 +77,7 @@ CREATE TABLE `water`
   subject_number varchar(10)    NOT NULL DEFAULT 0
     COMMENT '科目id',
   log_id         int            not null default 0 comment '日志号',
+  trans_date varchar(8) not null comment '交易日期',
   money          DECIMAL(10, 2) NOT NULL DEFAULT 0
     COMMENT '金额',
   create_time    TIMESTAMP      NOT NULL DEFAULT current_timestamp

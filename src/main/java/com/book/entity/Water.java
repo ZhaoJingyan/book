@@ -3,6 +3,7 @@ package com.book.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.book.common.BaseEntity;
+import com.book.entity.type.AccountDate;
 import com.book.entity.type.SubjectNumber;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -39,6 +40,12 @@ public class Water extends BaseEntity<Integer> {
      */
     @TableField("log_id")
     private int logId;
+
+    /**
+     * 交易日期
+     */
+    @TableField("trans_date")
+    private AccountDate transDate;
 
     /**
      * 金额
