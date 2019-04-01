@@ -39,9 +39,10 @@ public class SubjectPath {
     private void updatePathString() {
         if (subjectNameChain.size() == 1) {
             pathString = ROOT;
+            return;
         }
         StringBuilder builder = new StringBuilder();
-        subjectNameChain.forEach(name -> builder.append(ROOT).append(name));
+        subjectNameChain.stream().skip(1).forEach(name -> builder.append(ROOT).append(name));
         pathString = builder.toString();
     }
 
