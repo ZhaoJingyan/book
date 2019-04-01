@@ -7,7 +7,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: 123456
+    #password: 123456
     url: jdbc:mysql://localhost:3306/${spring.application.name}?useUnicode=yes&characterEncoding=UTF-8
     hikari:
       minimum-idle: 5
@@ -21,7 +21,6 @@ spring:
   output:
     ansi:
       enabled: always
-
 
 mybatis-plus:
   mapper-locations: classpath:mapper/**/*.xml
