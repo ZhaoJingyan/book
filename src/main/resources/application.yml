@@ -27,6 +27,7 @@ mybatis-plus:
   type-aliases-package: com.book.entity
   type-handlers-package: com.book.entity.handler
   type-aliases-super-type: com.book.common.BaseEntity
+
 logging:
   level:
     com.book.dao: DEBUG

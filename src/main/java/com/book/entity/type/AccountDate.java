@@ -5,6 +5,8 @@ import com.book.common.Extend;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -14,6 +16,16 @@ import java.util.Objects;
 public class AccountDate {
 
     private final static String EMPTY_ACCOUNT_DATE_STRING = "00000000";
+
+    private static Map<String, AccountDate> cache = new HashMap<>();
+
+    public static AccountDate of(Date date) {
+        return of(DateUtils.SIMPLE_DATE_FORMAT.format(date));
+    }
+
+    public  static AccountDate of(String dateString) {
+        return Extend.isNull(cache.get(dateString), () -> Extend.with(new AccountDate(dateString), date -> cache.put(dateString, date)));
+    }
 
     private String dateString;
 
@@ -25,11 +37,12 @@ public class AccountDate {
 
     private String day = null;
 
+    @Deprecated
     public AccountDate(Date date) {
         this(DateUtils.SIMPLE_DATE_FORMAT.format(date));
     }
 
-    public AccountDate(String dateString) {
+    private AccountDate(String dateString) {
         this.dateString = Objects.isNull(dateString) || dateString.length() < 8
             ? EMPTY_ACCOUNT_DATE_STRING : dateString;
     }

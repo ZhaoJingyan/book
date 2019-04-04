@@ -1,5 +1,6 @@
 package com.book.common;
 
+import com.book.common.function.RunnableWithArgument;
 import com.book.common.function.RunnableWithValue;
 
 /**
@@ -44,8 +45,8 @@ public class Extend {
         return value;
     }
 
-    public static <T> T with(T value, Runnable runnable) {
-        runnable.run();
+    public static <T> T with(T value, RunnableWithArgument<T> runnable) {
+        runnable.run(value);
         return value;
     }
 

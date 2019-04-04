@@ -38,8 +38,8 @@ public class BookDaoTest {
     @Test
     public void insert() {
         try {
-            Book newBook = new Book().setName("test-book").setAccountDate(new AccountDate("20190101"))
-                .setClosingAccountDate(new AccountDate("20191231"));
+            Book newBook = new Book().setName("test-book").setAccountDate(AccountDate.of("20190101"))
+                .setClosingAccountDate(AccountDate.of("20191231"));
             assertEquals((long) bookDao.insert(newBook), 1L);
             Book oldBook = bookDao.selectById(newBook.getId());
             assertNotNull("插入失败", oldBook);

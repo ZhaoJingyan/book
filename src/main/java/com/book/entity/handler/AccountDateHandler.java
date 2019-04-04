@@ -26,16 +26,16 @@ public class AccountDateHandler implements TypeHandler<AccountDate> {
 
     @Override
     public AccountDate getResult(ResultSet resultSet, String s) throws SQLException {
-        return new AccountDate(resultSet.getString(s));
+        return AccountDate.of(resultSet.getString(s));
     }
 
     @Override
     public AccountDate getResult(ResultSet resultSet, int i) throws SQLException {
-        return new AccountDate(resultSet.getString(i));
+        return AccountDate.of(resultSet.getString(i));
     }
 
     @Override
     public AccountDate getResult(CallableStatement callableStatement, int i) throws SQLException {
-        return new AccountDate(callableStatement.getString(i));
+        return AccountDate.of(callableStatement.getString(i));
     }
 }
