@@ -12,6 +12,12 @@ import com.book.common.function.RunnableWithValue;
 @SuppressWarnings("unused")
 public class Extend {
 
+    public static <T> void is(boolean condition, Runnable runnable) {
+        if (condition) {
+            runnable.run();
+        }
+    }
+
     /**
      * 如果为空，执行runnable
      *
@@ -50,7 +56,7 @@ public class Extend {
         return value;
     }
 
-    public static <T> T print(T value){
+    public static <T> T print(T value) {
         System.out.println(value.toString());
         return value;
     }

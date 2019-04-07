@@ -17,4 +17,18 @@ public class SubjectPathTest extends BaseTest {
         assertEquals(path.toString(), "/测试/测试科目");
     }
 
+    @Test
+    public void testGetDirectoryPath(){
+        SubjectPath path = new SubjectPath("/测试/测试2/测试科目");
+        assertEquals(path.getDirectoryPath(),"/测试/测试2/");
+        assertEquals(SubjectPath.ROOT.getDirectoryPath(), SubjectPath.ROOT_PATH);
+    }
+
+    @Test
+    public void testGetName(){
+        SubjectPath path = new SubjectPath("/测试/测试2/测试科目");
+        assertEquals(path.getName(),"测试科目");
+        assertEquals(SubjectPath.ROOT.getName(), SubjectPath.ROOT_PATH);
+    }
+
 }

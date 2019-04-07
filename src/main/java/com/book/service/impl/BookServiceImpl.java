@@ -1,10 +1,12 @@
 package com.book.service.impl;
 
+import java.util.Optional;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.book.common.BookException;
+import com.book.common.Extend;
 import com.book.common.OptionalUtils;
 import com.book.dao.BookDao;
 import com.book.entity.Book;
@@ -47,14 +49,12 @@ public class BookServiceImpl implements BookService {
     public Book save(Book book) throws BookException {
         try {
             if (book.getId() == null) {
-                if (OptionalUtils.isNotBlank(book.getAbstractContent())) {
-                    book.setAbstractId(abstractService.save(book.getAbstractContent().trim()));
-                }
+                Extend.is(OptionalUtils.isNotBlank(book.getAbstractContent()),
+                    () -> book.setAbstractId(abstractService.save(book.getAbstractContent().trim())));
                 dao.insert(book);
             } else {
-                if (OptionalUtils.isNotBlank(book.getAbstractContent())) {
-                    book.setAbstractId(abstractService.save(book.getAbstractId(), book.getAbstractContent()));
-                }
+                Extend.is(OptionalUtils.isNotBlank(book.getAbstractContent()),
+                    () -> book.setAbstractId(abstractService.save(book.getAbstractId(), book.getAbstractContent())));
                 dao.updateById(book);
             }
             return dao.selectById(book.getId());
@@ -73,13 +73,11 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book get(int id) throws BookException {
         try {
-            Book book = dao.selectById(id);
-            if (book == null) {
-                throw new BookException("未找到id为{}的实体.");
-            }
-            return book;
+            return Optional.of(dao.selectById(id)).get();
         } catch (DataAccessException e) {
             throw new BookException(e, "查询id为{}的实体时发生数据库错误:{}", id, e.getMessage());
+        } catch (NullPointerException e) {
+            throw new BookException(e, "未找到id为{}的实体:{}", id, e.getMessage());
         }
     }
 

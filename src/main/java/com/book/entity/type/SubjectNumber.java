@@ -21,7 +21,7 @@ public class SubjectNumber {
     /**
      * 空科目号，也是根目录号
      */
-    private final static SubjectNumber EMPTY_SUBJECT_NUMBER = new SubjectNumber(EMPTY_ID);
+    public final static SubjectNumber EMPTY_SUBJECT_NUMBER = new SubjectNumber(EMPTY_ID);
 
     /**
      * 客户号缓存

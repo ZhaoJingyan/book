@@ -21,7 +21,7 @@ import org.apache.ibatis.type.Alias;
 @Accessors(chain = true)
 @Alias("Subject")
 @TableName(value = "subject", resultMap = "subjectResultMap")
-public class Subject extends BaseEntity<Integer> {
+public class Subject extends BaseEntity<Long> {
 
     @TableField("subject_number")
     private SubjectNumber subjectNumber;
@@ -48,7 +48,7 @@ public class Subject extends BaseEntity<Integer> {
      * 上级科目
      */
     @TableField("pid")
-    private int pid;
+    private SubjectNumber pid;
 
     /**
      * 是否有下级科目
@@ -60,7 +60,7 @@ public class Subject extends BaseEntity<Integer> {
      * 摘要
      */
     @TableField("abstract_id")
-    private int abstractId;
+    private long abstractId;
 
     /**
      * 摘要内容

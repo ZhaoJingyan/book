@@ -31,10 +31,6 @@ public class BookDaoTest {
     @Autowired
     private BookDao bookDao;
 
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    @Autowired
-    private TestDao testDao;
-
     @Test
     public void insert() {
         try {
@@ -50,11 +46,6 @@ public class BookDaoTest {
             log.error(e.getMessage(), e);
             fail("数据错误!");
         }
-    }
-
-    @After
-    public void resetAutoIncrement() {
-        testDao.resetAutoIncrement("book");
     }
 
 }

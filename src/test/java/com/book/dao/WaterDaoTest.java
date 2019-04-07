@@ -31,7 +31,7 @@ public class WaterDaoTest extends BaseTest {
     @Test
     public void testInsert() {
         Water water = new Water().setBookId(1).setLogId(1).setMoney(new BigDecimal(1000.11))
-            .setSubjectNumber(SubjectNumber.of("1001")).setTransDate(new AccountDate("00000000"));
+            .setSubjectNumber(SubjectNumber.of("1001")).setTransDate(AccountDate.of("00000000"));
         dao.insert(water);
         water = dao.selectById(water.getId());
         log.info("测试流水:{}", water);
@@ -46,11 +46,11 @@ public class WaterDaoTest extends BaseTest {
         for(int i = 0,j = 15; i < j; i++){
             testDate = DateUtils.getYesterday(testDate);
             Water water = new Water().setBookId(1).setLogId(i * 2).setMoney(new BigDecimal(1000 * i - 8 * i))
-                .setSubjectNumber(SubjectNumber.of("1001")).setTransDate(new AccountDate(testDate));
+                .setSubjectNumber(SubjectNumber.of("1001")).setTransDate(AccountDate.of(testDate));
             dao.insert(water);
         }
-        List<Water> waters = dao.selectByTransDate(new AccountDate("20190101"),
-            new AccountDate("20190110"));
+        List<Water> waters = dao.selectByTransDate(AccountDate.of("20190101"),
+            AccountDate.of("20190110"));
         log.info("取得的waters:{}", waters);
         assertEquals(waters.size(), 10L);
         waters.stream().limit(1).forEach(water -> assertEquals(Long.parseLong(water.getTransDate().getDay()), 1));

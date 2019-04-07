@@ -16,6 +16,10 @@ public class BookException extends Exception {
         super(message);
     }
 
+    public BookException(String message, Object... args) {
+        super(MessageFormatter.format(message, args).getMessage());
+    }
+
     public BookException(Exception e, String message, Object... args) {
         super(MessageFormatter.format(message, args).getMessage(), e);
     }

@@ -51,7 +51,7 @@ CREATE TABLE subject
   `path`           VARCHAR(255) NOT NULL
     COMMENT '路径',
   `name`           VARCHAR(30)  NOT NULL,
-  `pid`            CHAR(8)      NOT NULL DEFAULT 0,
+  `pid`            CHAR(8)      NOT NULL DEFAULT '00000000',
   `is_directory`   BOOLEAN               DEFAULT FALSE NOT NULL COMMENT '是否有下级科目',
   `create_time`    TIMESTAMP    NOT NULL DEFAULT current_timestamp
     COMMENT '创建时间',
